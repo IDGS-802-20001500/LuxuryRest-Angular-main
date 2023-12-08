@@ -1,0 +1,189 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+<div class="contenedorPro">
+  <br />
+
+  <div class="img">
+    <div
+      class="icon-container"
+      style="background-color: #6ea1ca; border-radius: 50%"
+    >
+      <i class="fa-solid fa-shop" style="font-size: 30px; color: #fff"></i>
+    </div>
+    <h1
+      class="titulo"
+      style="
+        text-align: center;
+        font-size: 48px;
+        font-weight: bold;
+        font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+        margin-left: 10px;
+      "
+    >
+      Gestión de Productos
+    </h1>
+  </div>
+
+  <hr />
+  <br />
+  <div style="display: inline-block; margin-right: 10px">
+    <a class="btn btn-success btnAgregar" routerLink="agregarProducto"
+      ><i class="fa-regular fa-square-plus"></i> Agregar producto</a
+    >
+    <a class="btn btn-primary btnCrear" routerLink="crearProducto"
+      ><i class="fa-solid fa-gears"></i> Crear productos</a
+    >
+  </div>
+  <br />
+  <br />
+  <div class="card">
+    <h3
+      class="card-header"
+      style="
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+        background-color: #6ea1ca;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      Productos
+    </h3>
+    <div class="card-body">
+      <div class="outer-container">
+        <b>Filtrar por: </b>
+        <input
+          type="text" 
+          class="form-control" 
+          name="filtroRec"
+          style="width: 230px"
+          placeholder="Ingresa tu búsqueda"
+         [(ngModel)]="filtro" (ngModelChange)="filtrarLista()"
+        />
+ 
+        <button class="btn btn-icon" (click)="ordenarListaAlfabeticamente()">
+          <i class="fa-solid" [ngClass]="{'fa-sort-alpha-up': ordenAscendente, 'fa-sort-alpha-down': !ordenAscendente}"></i>
+        </button>
+        
+
+        <label class="switch" style="margin-left: 15px">
+          <input type="checkbox" [(ngModel)]="activarFiltro"  checked />
+          <span class="slider round"></span>
+          <span
+            class="status-label"
+            data-on="Activo"
+            data-off="Inactivo"
+            [innerText]="activarFiltro ? 'Activo' : 'Inactivo'"
+            style="display: inline"
+          ></span>
+        </label>
+      </div>
+      <br />
+      <div
+        class="tablas"
+        style="overflow-x: auto; overflow-y: auto; max-height: 400px"
+      >
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Imagen</th>
+              <th>Precio</th>
+              <th>Cantidad disp.</th>
+              <th>Valoración Total</th>
+              <th>Valoración C</th> 
+              <th>Estatus</th>
+              <th colspan="2">Acciones</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let producto of listaProductos">
+              <ng-container
+                *ngIf="
+                  activarFiltro
+                    ? producto.estatus === 1
+                    : producto.estatus === 0
+                "
+              >
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>
+                  <img
+                    alt="producto"
+                    title="producto"
+                    [src]="producto.imagen"
+                    style="height: 65px; width: 65"
+                  />
+                </td>
+                <td>{{ producto.precio_venta }}</td>
+                <td>{{ producto.cantidad_disponible }}</td>
+                <td>{{ producto.valoracionT }}</td>
+                <td>{{ producto.valoracionC }}</td>
+                <td>
+                  <div *ngIf="producto.estatus == false">
+                    Inactivo
+                  </div>
+                  <div *ngIf="producto.estatus">
+                    Activo
+                  </div>
+                  
+
+                </td>
+                <td>
+                  <a
+                    class="btn btn-warning"
+                    (click)="editarProducto(
+                      producto.id_producto
+                      )"
+                    style="border-radius: 16px"
+                    ><i class="fa-solid fa-pen"></i> Editar</a
+                  >
+                </td>
+                <td>
+                  
+
+                  <a class="btn btn-primary" style="border-radius: 16px"
+                  (click)="eliminarProducto( producto.id_producto, 1)" 
+                  *ngIf="producto.estatus == 0">
+                    <i class="fa-solid fa-pen"></i> Activar</a>
+
+
+                    <a class="btn btn-danger" style="border-radius: 16px"
+                    (click)="eliminarProducto( producto.id_producto, 0)" 
+                    *ngIf="producto.estatus == 1">
+                    <i class="fa-solid fa-trash"></i> Eliminar</a>
+                    
+
+
+
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../login" class="btn btn-primary">vamos</button>
+</div>

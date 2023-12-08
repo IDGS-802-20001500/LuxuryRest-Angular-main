@@ -1,0 +1,170 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+  <h1
+    class="titulo"
+    style="
+      text-align: center;
+      font-size: 48px;
+      font-weight: bold;
+      font-family: LuxuriousScript-Regular;
+      font-style: italic;
+    "
+  >
+    Proveedores
+  </h1>
+  <br />
+  <div class="img">
+    <i
+      class="fa-solid fa-truck-ramp-box"
+      style="font-size: 60px; color: #6ea1ca"
+    ></i>
+  </div>
+  <hr />
+  <br />
+  <a class="btn btn-success" id="botonAgregar" routerLink="agregarProveedor"
+    ><i class="fa-solid fa-plus"></i> Agregar proveedor
+  </a>
+  <br />
+  <br />
+
+  <div class="card">
+    <h4
+      class="card-header"
+      style="
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+        background-color: #6ea1ca;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      Proveedores
+    </h4>
+    <br />
+    <div class="card-body">
+      
+      <div class="outer-container">
+        <b>Filtrar por: </b>
+        <input
+          type="text"
+          class="form-control" 
+          name="filtroRec"
+          style="width: 230px"
+          placeholder="Ingresa tu búsqueda"
+         [(ngModel)]="filtro" (ngModelChange)="filtrarLista()"
+        />
+
+        <button class="btn btn-icon" (click)="ordenarListaAlfabeticamente()">
+          <i class="fa-solid" [ngClass]="{'fa-sort-alpha-up': ordenAscendente, 'fa-sort-alpha-down': !ordenAscendente}"></i>
+        </button>
+
+        <label class="switch" style="margin-left: 15px">
+          <input type="checkbox" [(ngModel)]="activarFiltro"  checked />
+          <span class="slider round"></span>
+          <span
+            class="status-label"
+            data-on="Activo"
+            data-off="Inactivo"
+            [innerText]="activarFiltro ? 'Activo' : 'Inactivo'"
+            style="display: inline"
+          ></span>
+        </label>
+      </div>
+      <div
+        class="tablas"
+        style="overflow-x: auto; overflow-y: auto; max-height: 350px"
+      >
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Nombre Empresa</th>
+              <th>Nombre Contacto</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
+              <th>Estatus</th>
+              <th colspan="2">Acciones</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider" >
+            <tr *ngFor="let proveedor of listaProveedores" >
+              <ng-container
+              *ngIf="
+                activarFiltro
+                  ? proveedor.activo === true
+                  : proveedor.activo === false
+              "
+            >
+                <td>{{ proveedor.nombre_empresa }}</td>
+                <td>{{ proveedor.nombre_contacto  }}</td>
+                <td>{{ proveedor.correo_electronico }}</td>
+                <td>{{ proveedor.telefono }}</td>
+                <td>{{ proveedor.direccion }}</td>
+
+                <td>
+                  <div *ngIf="proveedor.activo == true">Activo</div>
+                  <div *ngIf="proveedor.activo == false">Inactivo</div>
+                </td>
+                <td>
+                  <a
+                    class="btn btn-warning"
+                    routerLink="editarProveedor"
+                    style="border-radius: 16px"
+                    (click)="editarProveedor(proveedor.id_proveedor)"
+                    ><i class="fa-solid fa-pen"  ></i> Editar</a
+                  >
+                </td>
+                <td>
+                  <a class="btn btn-primary" style="border-radius: 16px"
+                    (click)="eliminarProveedor(
+                      proveedor.id_proveedor,
+                      proveedor.nombre_empresa,
+                      proveedor.nombre_contacto,
+                      proveedor.correo_electronico,
+                      proveedor.telefono,
+                      proveedor.direccion, true)" *ngIf="proveedor.activo == false">
+                    <i class="fa-solid fa-pen"></i> Activar</a>
+
+
+                    <a class="btn btn-danger" style="border-radius: 16px"
+                    (click)="eliminarProveedor(
+                      proveedor.id_proveedor,
+                      proveedor.nombre_empresa,
+                      proveedor.nombre_contacto,
+                      proveedor.correo_electronico,
+                      proveedor.telefono,
+                      proveedor.direccion, false)" *ngIf="proveedor.activo == true">
+                    <i class="fa-solid fa-trash"></i> Eliminar</a>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../login" class="btn btn-primary">vamos</button>
+</div>
+

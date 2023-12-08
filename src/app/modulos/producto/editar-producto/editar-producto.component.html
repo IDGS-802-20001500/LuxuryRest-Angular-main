@@ -1,0 +1,140 @@
+<div *ngIf="usuario.length > 0">
+  <div class="contenedorProA">
+    <a
+      class="btn btn-danger"
+      style="border-radius: 16px"
+      [routerLink]="'producto'"
+      ><i class="fa-solid fa-arrow-left"></i> Regresar</a
+    >
+    <br />
+    <br />
+
+    <div class="contenedorAgrPro">
+      <h2 style="text-align: center">Editar producto</h2>
+      <hr />
+      <form class="row g-3" (ngSubmit)="editar()">
+        <div>
+          <input
+            class="form-control"
+            style="max-width: 2px"
+            type="text"
+            name="idPro"
+            hidden
+            [(ngModel)]="id_producto"
+          />
+        </div>
+
+        <div class="col-4">
+          <label for="nombrePro" class="form-label"
+            >Nombre del producto:
+          </label>
+          <input
+            class="form-control"
+            style="width: 410px"
+            type="text"
+            name="nombrePro"
+            [(ngModel)]="nombre"
+          />
+        </div>
+
+        <div class="col-4">
+          <label for="precio" class="form-label" style="margin-left: 150px"
+            >Precio venta:
+          </label>
+          <input
+            class="form-control"
+            type="number"
+            style="margin-left: 150px"
+            name="precio"
+            min="1"
+            placeholder="$0"
+            [(ngModel)]="precio_venta"
+          />
+        </div>
+
+        <div class="col-12">
+          <label for="descP" class="form-label">Descripción: </label>
+          <textarea
+            class="form-control"
+            id="desc"
+            name="descP"
+            rows="3"
+            style="border-radius: 16px"
+            [(ngModel)]="descripcion"
+          ></textarea>
+        </div>
+
+        <div class="col-8">
+          <label for="imagenP" class="form-label">Imagen: </label>
+          <input
+            #inputImagen
+            class="form-control"
+            type="file"
+            name="imagenP"
+            (change)="cargarImagen(inputImagen)"
+            [(ngModel)]="imagen"
+          />
+        </div>
+
+        <div class="col-4">
+          <label class="form-label">Imagen ejemplo: </label>
+          <br />
+          <div
+            style="border: 1px solid black; border-radius: 10px; height: 150px"
+          >
+            <img
+              alt="imagen"
+              style="width: 64px; height: 64px"
+              [src]="imagen"
+            />
+          </div>
+        </div>
+
+        <div class="col-4" hidden>
+          <label for="cantidad" class="form-label">Cantidad: </label>
+          <input
+            class="form-control"
+            type="number"
+            name="cantidad"
+            min="1"
+            [(ngModel)]="cantidad_disponible"
+          />
+        </div>
+
+        <div class="col-4">
+          <label class="form-label">Estatus: </label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="estatus"
+            style="border-radius: 16px"
+          >
+            <option value="0">Inactivo</option>
+            <option value="1">Activo</option>
+          </select>
+        </div>
+
+        <br />
+
+        <div class="col-12">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            style="border-radius: 16px"
+          >
+            Actualizar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br />
+  <label for="">Inicia sesion</label>
+  <br />
+  <br />
+
+  <button routerLink="../../../login" class="btn btn-primary">vamos</button>
+</div>

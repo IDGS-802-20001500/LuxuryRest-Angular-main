@@ -1,0 +1,76 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+<div class="contenedorProA">
+  <a class="btn btn-danger" style="border-radius: 16px;" routerLink="../"><i class="fa-solid fa-arrow-left"></i> Regresar</a>
+  <br>
+  <br>
+
+  <div class="contenedorAgrPro">
+
+    <h2 style="text-align: center;" >Agregar nuevo producto</h2>
+
+    <hr>
+
+    <form class="row g-3"  (ngSubmit)="agregarProd()">
+
+
+      <div class="col-4">
+        <label for="nombrePro" class="form-label">Nombre del producto: </label>
+        <input class="form-control" type="text" name="nombrePro" placeholder="Nombre" [(ngModel)]="nombre" required>
+      </div>
+
+      <div class="col-2">
+        <label for="precio" class="form-label">Precio venta: </label>
+        <input class="form-control" type="number" name="precio" min="1" max="100" placeholder="$0"  [(ngModel)]="precio_venta" required>
+      </div>
+
+      <div class="col-6">
+        <label for="descP" class="form-label">Descripción: </label>
+        <textarea class="form-control" id="desc" name="descP" rows="3" style="border-radius: 16px;" [(ngModel)]="descripcion"  required></textarea>
+      </div>
+      <div class="col-8">
+        <label for="imagenP" class="form-label">Imagen: </label>
+        <input #inputImagen class="form-control" type="file" name="imagenP" (change)="cargarImagen(inputImagen)" [(ngModel)]="imagenMostrada" required>
+    </div> 
+    
+    <div class="col-4">
+        <label class="form-label">Imagen Seleccionada: </label>
+        <br>
+        <div style="border: 1px solid black; border-radius: 10px; height: 150px;">
+            <img alt="imagen" [src]="imagenMostrada" style="width: 94px; height: 94px;" *ngIf="imagenMostrada !== null">
+            <p *ngIf="imagenMostrada === null">No se ha seleccionado imagen</p>
+        </div>
+    </div>
+    
+      <div class="col-6">
+        <button class="btn btn-success" type="submit">Agregar</button>
+      </div>
+
+    </form>
+
+
+  </div>
+
+
+
+
+</div>
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../login" class="btn btn-primary">vamos</button>
+</div>

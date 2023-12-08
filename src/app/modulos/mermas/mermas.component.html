@@ -1,0 +1,75 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+
+
+    <h1 class="titulo">Mermas</h1>
+  
+    <br>
+  
+    <a class="btn btn-success btnAgregar" routerLink="registrar-mermas"><i class="fa-regular fa-square-plus"></i> Registrar merma</a>
+  <br>
+    <br>
+    <div class="card">
+      <h3 class="card-header">Mermas</h3>
+      <br>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+           
+          </div>
+        </div>
+        <br>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Descripcion</th>
+              <th>Cantidad perdida</th>
+              <th>Fecha de registro</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+
+            
+            <tr *ngFor="let merma of listaMermas">
+              <td hidden>{{merma.id_perecedero}}</td>
+              <td>
+                <div *ngFor="let producto of listaProductos">
+                  <div *ngIf="producto.id_producto == merma.id_producto">
+                    {{producto.nombre}}
+                  </div>
+                </div>
+              </td>
+              <td>{{merma.descripcion}}</td>
+              <td>{{merma.cantidad_perdida}}</td>
+              <td>{{merma.fecha_registro}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  
+  
+  
+  </div>
+  
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../login" class="btn btn-primary">vamos</button>
+</div>

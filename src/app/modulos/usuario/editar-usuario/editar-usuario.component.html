@@ -1,0 +1,67 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+
+
+  <a class="btn btn-danger" routerLink="../" style="border-radius: 16px;"><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a>
+  <h1 class="titulo">Editar usuario</h1>
+
+  <br>
+  <br>
+
+  <div class="formularioUsuario">
+
+
+    <form action="" class="row g-3">
+
+      <div class="col-2">
+        <label for="idUser" class="form-label">ID: </label>
+        <input type="text" id="idUser" name="idUser" class="form-control" [(ngModel)]="id" disabled>
+     </div>
+
+     <div class="col-4">
+        <label for="name" class="form-label">Nombre: </label>
+        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name">
+     </div>
+
+      <div class="col-6">
+        <label for="email" class="form-label">Email: </label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="email">
+      </div>
+
+      <div class="col-4">
+        <label for="password" class="form-label">Contraseña: </label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password">
+      </div>
+
+
+      <div class="col-12">
+        <button class="btn btn-success" type="submit" id="btnAgregar"  (click)="editar()"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../../login" class="btn btn-primary">vamos</button>
+</div>

@@ -1,0 +1,14 @@
+input{
+  border-radius: 16px;
+}
+
+.contenedorProA{
+  margin: 10px;
+}
+
+.contenedorAgrPro{
+  background-color: rgb(252, 252, 252);
+  border: 2px solid #6ea1ca;
+  border-radius: 16px;
+  padding: 20px;
+}

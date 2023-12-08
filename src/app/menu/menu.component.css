@@ -1,0 +1,73 @@
+.contenedor-padre {
+  display: flex;
+  flex-flow: column;
+  height: 150%;
+}
+
+.barra {
+  height: 100px; 
+  position: relative;
+  z-index: 1000;
+}
+
+.contenido {
+  flex: 1 1 auto;
+}
+
+.contendorMain {
+  padding: 20px;
+}
+
+.img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* styles.css o styles.scss */
+
+@font-face { 
+  font-family: 'LuxuriousScript-Regular'; /* Puedes asignar un nombre para la fuente personalizada */
+  src: url('fonts/LuxuriousScript-Regular.ttf') format('truetype');
+}
+
+
+@font-face { 
+  font-family: 'Westwood-Studio'; /* Puedes asignar un nombre para la fuente personalizada */
+  src: url('fonts/Westwood-Studio.ttf') format('truetype');
+}
+
+
+
+
+.mi-footer {
+  background-color: #6ea1ca;
+  color: white;
+  padding-top: 2px;
+}
+
+
+.mi-footer .derechos {
+  color: #d9d9d9;
+  font-family: Westwood-Studio;
+  font-size: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.imagen-con-lineas {
+  position: relative;
+}
+.imagen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.imagen-con-lineas img {
+  max-width: 100%;
+  height: auto;
+}

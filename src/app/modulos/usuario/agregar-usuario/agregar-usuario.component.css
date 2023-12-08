@@ -1,0 +1,35 @@
+.contenedorPrincipal {
+  margin: 10px;
+}
+
+.titulo{
+  text-align: center;
+  font-size: 4em;
+}
+
+input{
+  border-radius: 16px;
+  border: 1px solid #6ea1ac;
+}
+
+select{
+  border-radius: 16px;
+  border: 1px solid #6ea1ac;
+}
+
+.formularioUsuario{
+  border: 2px solid #6ea1ca;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#btnAgregar{
+  border-radius: 16px;
+}
+
+#btnAgregar:hover{
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+  transition: all 0.60;
+}

@@ -1,0 +1,36 @@
+.contenedorPrincipal{
+  margin: 0.5rem;
+}
+
+.titulo{
+  
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  margin-left: 10px;
+}
+
+.formularioMateria{
+  border: .1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#btnActualizar{
+  border-radius: 16px;
+}
+
+#btnActualizar:hover{
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+  transition: all 0.60;
+}
+
+
+.img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

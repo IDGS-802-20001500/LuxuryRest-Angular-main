@@ -1,0 +1,114 @@
+<br />
+<div class="contenedorRe">
+  <div class="contenedorRe">
+    <div
+      class="card registroUser1"
+      style="background-image: url('assets/fondo_azul.png'); width: 29rem"
+    >
+      <div class="img">
+        <img
+          src="assets/registrar.png"
+          style="width: 520px; height: 520px"
+          title="Luxury Rest Registro"
+        />
+      </div>
+    </div>
+    <br />
+  </div>
+  <div class="contenedorRe">
+    <div class="card registroUser2" style="width: 27rem">
+      <div class="col-4" style="padding-right: 10px">
+        <a
+          class="btn btn-secondary"
+          style="border-radius: 15px"
+          routerLink="../"
+        >
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+      <div style="padding: 20px">
+        <div class="text-center card-img-top" style="margin-top: 10px">
+          <i
+            class="fa-solid fa-user-plus"
+            style="font-size: 84px; color: #6ea1ca"
+          ></i>
+        </div>
+        <div class="text-center">
+          <br />
+          <h1 class="text-center" style="font-weight: bold; font-size: x-large">
+            Registro de Usuario
+          </h1>
+        </div>
+        <hr />
+        <br />
+        <form (submit)="registrar()" [formGroup]="formulario" #formDir="ngForm">
+          <label for="nombre" class="form-label">Nombre de usuario: </label>
+          <br />
+          <div class="form-group">
+            <span class="input-icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <input
+              class="form-control"
+              type="email"
+              style="border-radius: 15px; padding-left: 40px"
+              name="user"
+              placeholder="Nombre Usuario"  required formControlName="nombre"
+              [(ngModel)]="name"
+            />
+            
+          </div>
+          <div *ngIf="nombre.invalid $$ (nombre.dirty || nombre.touched)" class="alert alert-warning">
+            <div *ngIf="nombre.errors?.['required']">
+                El campo es obligatorio
+            </div>
+            <div *ngIf="nombre.errors?.['minlength']">
+                minimo 4 caracteres
+            </div>
+        </div>
+
+          <br />
+          <label for="correo" class="form-label">Correo: </label>
+          <br />
+          <div class="form-group">
+            <span class="input-icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <input
+              class="form-control"
+              type="email"
+              style="border-radius: 15px; padding-left: 40px"
+              name="correo"
+              placeholder="email@gmail.com"  required formControlName="correo"
+              [(ngModel)]="email"
+            />
+          </div>
+          <br />
+          <label for="contrasenia" class="form-label">Contraseña: </label>
+          <br />
+          <div class="form-group">
+            <span class="input-icon">
+              <i class="fas fa-lock"></i>
+            </span>
+            <input
+              class="form-control"
+              type="password"
+              style="border-radius: 15px; padding-left: 40px"
+              name="contrasenia"
+              placeholder="Contraseña"  required formControlName="contrasenia"
+              [(ngModel)]="password"
+            />
+          </div>
+          <br />
+
+          <div style="display: flex; justify-content: center">
+            <div class="col-4">
+              <button class="btn" type="submit" id="boton" [disabled]="formulario.invalid">Registrarse</button>
+            </div>
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

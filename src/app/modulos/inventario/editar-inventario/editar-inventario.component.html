@@ -1,0 +1,60 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+
+
+  <a class="btn btn-secondary" routerLink="../../../inventario" style="border-radius: 16px;"><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a>
+
+  <h1 class="titulo">Editar inventario</h1>
+<hr>
+  <br><br>
+
+  <div class="formularioInventario"> 
+    <form action="editar()" class="row g-3"> 
+
+      <div >
+        <label for="" class="form-label" hidden>ID: </label>
+        <input type="text" class="form-control" name="idInv" disabled hidden style="width: 1px;" hidden  [(ngModel)]="id_inventario">
+      </div>
+
+      <div class="col-4">
+        <label for="" class="form-label">Materia prima: </label>
+        <input type="text" class="form-control" name="matpr" disabled  [(ngModel)]="nombreMateria">
+      </div>
+
+      <div class="col-4">
+        <label for="" class="form-label">Cantidad: </label>
+        <input type="number" class="form-control" name="cant"  [(ngModel)]="cantidad_almacenada">
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-success" (click)="editar()" type="submit">Actualizar</button>
+      </div>
+
+
+    </form>
+  </div>
+ 
+
+</div>
+
+
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../../login" class="btn btn-primary">vamos</button>
+</div>
+

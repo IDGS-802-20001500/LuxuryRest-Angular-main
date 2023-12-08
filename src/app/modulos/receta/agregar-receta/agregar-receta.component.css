@@ -1,0 +1,25 @@
+.contenedorPrincipal{
+  margin: 0.5rem;
+}
+
+.titulo{
+  font-size: 4em;
+  text-align: center;
+}
+
+.formularioReceta{
+  border: 2px solid #6ea1ca;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#botonGuardar{
+  border-radius: 16px;
+}
+
+#botonGuardar:hover{
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+  transition: all 0.60;
+}

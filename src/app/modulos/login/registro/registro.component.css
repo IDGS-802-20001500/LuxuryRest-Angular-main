@@ -1,0 +1,61 @@
+.contenedorRe{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.registroUser1{
+  background-color: #FFFFFF;
+  border: 0.1px solid #D9D9D9;
+  width: 400px;
+  border-radius: 20px 0 0 20px;
+  padding: 20px;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.4);
+}
+
+.registroUser2{
+  background-color: #FFFFFF;
+  border: 0.1px solid #D9D9D9;
+  width: 400px;
+  border-radius: 0 20px 20px 0;
+  padding: 20px;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.4);
+}
+
+.img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.input-icon i {
+  font-size: 20px;
+  color: #888;
+}
+
+
+#boton{ 
+  background-color: #6ea1ca;
+   color:white;
+   border-radius: 10px;
+}
+
+/* Estilos del botón en hover */
+#boton:hover {
+  color: white;
+  background-color: #000;
+  border: 1px solid rgb(97, 95, 95);
+  transition: all 0.60;
+}

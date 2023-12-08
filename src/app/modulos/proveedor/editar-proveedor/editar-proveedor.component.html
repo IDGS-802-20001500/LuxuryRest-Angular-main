@@ -1,0 +1,79 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+
+
+  <a class="btn btn-secondary" routerLink="../../../proveedores" style="border-radius: 16px;"><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a>
+  <h1 class="titulo" style="text-align: center; font-size: 48px; font-weight: bold; font-family: LuxuriousScript-Regular; font-style: italic;">Editar Proveedor</h1>
+
+  <br>
+  <br>
+
+  <div class="formularioProveedor">
+
+
+    <form action="" class="row g-3">
+      <div class="col-2">
+        <label for="Id_Proveedor" class="form-label">Id Proveedor:</label>
+        <input [(ngModel)]="id_proveedor" type="number" id="Id_Proveedor" name="Id_Proveedor" class="form-control" disabled style="border-radius: 16px;">
+      </div>
+
+     <div class="col-4">
+        <label for="Nombre_Empresa" class="form-label">Nombre Empresa:</label>
+        <input  [(ngModel)]="nombre_empresa"  type="text" id="Nombre_Empresa" name="Nombre_Empresa" class="form-control" style="border-radius: 16px;">
+     </div>
+
+      <div class="col-4">
+        <label for="Nombre_contacto" class="form-label">Nombre contacto:</label>
+        <input  [(ngModel)]="nombre_contacto"  type="text" id="Nombre_contacto" name="Nombre_contacto" class="form-control" style="border-radius: 16px;">
+      </div>
+
+      <div class="col-6">
+        <label for="correo_electronico" class="form-label">Correo electronico:</label>
+        <input  [(ngModel)]="correo_electronico"  type="email" id="correo_electronico" name="correo_electronico" class="form-control" style="border-radius: 16px;">
+      </div>
+
+      <div class="col-4">
+        <label for="telefono" class="form-label">Teléfono:</label>
+        <input  [(ngModel)]="telefono"  type="text" id="telefono" name="telefono" class="form-control" style="border-radius: 16px;">
+      </div>
+
+      <div class="col-6">
+        <label for="direccion" class="form-label">Dirección:</label>
+        <input  [(ngModel)]="direccion" type="text" id="direccion" name="direccion" class="form-control" style="border-radius: 16px;">
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-success" type="submit" id="botonEditar" (click)="guardarProveedor()"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+      </div>
+
+
+    </form>
+
+  </div>
+
+
+
+
+</div>
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../../login" class="btn btn-primary">vamos</button>
+</div>

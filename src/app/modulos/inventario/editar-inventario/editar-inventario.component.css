@@ -1,0 +1,24 @@
+.contenedorPrincipal{
+  margin: 10px;
+}
+
+.formularioInventario{
+  padding: 10px;
+  border: .1px solid #d9d9d9;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.titulo{
+  font-size: 4em;
+  text-align: center;
+   font-size: 48px;
+    font-weight: bold;
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+input{
+  border-radius: 16px;
+  border: 1px solid #6ea1ca;
+}

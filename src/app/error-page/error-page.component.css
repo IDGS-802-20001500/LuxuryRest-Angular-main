@@ -1,0 +1,38 @@
+.contenedorPrincipal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #6ea1ca;
+}
+
+.subtitulo {
+  font-size: 20px;
+  color: black;
+}
+
+.cont{
+  padding: 20px;
+  margin: 10px;
+}
+
+#btn404{
+  background-color: #6ea1ca;
+  color: white;
+  border: 2px solid #6ea1ca;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+#btn404:hover{
+  background-color: #D9D9D9;
+  color: white;
+  border: 2px solid #D9D9D9;
+  border-radius: 15px;
+  padding: 5px;
+  cursor: pointer;
+}

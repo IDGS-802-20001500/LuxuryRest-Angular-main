@@ -1,0 +1,41 @@
+.contenedorPrincipal{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo{
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.pasarela{
+  width: 500px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input{
+  border-radius: 16px;
+}
+
+button{
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.logo{
+  width: 128px;
+  height: 128px;
+  border-radius: 16px;
+}
+
+#tablaPago{
+  border: 1px solid gainsboro;
+  border-radius: 8px;
+  overflow-y: scroll;
+}

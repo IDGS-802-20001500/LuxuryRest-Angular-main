@@ -1,0 +1,73 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+<br>
+    <a class="btn btn-danger" routerLink="../" style="border-radius: 16px;"><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a>
+  
+    <br>
+    <br>
+
+  <div class="img">
+      <br>
+    <h1 class="titulo">Agregar merma</h1>
+  
+  </div>
+
+  <br>
+    <div class="formularioMateria">
+  
+  
+      <form (ngSubmit)="agregarMerma()" class="row g-3">
+  
+       <div class="col-4">
+          <label for="productoId" class="form-label">Producto: </label>
+          <select name="productoId" id="productoId" class="form-select" style="border-radius: 16px;" [(ngModel)]="id_productoSel" (change)="onProductoSeleccionado($event)">
+            <option selected disabled >Selecciona el producto</option>
+            <option *ngFor="let productos of listaProductos" [value]="productos.id_producto" >{{productos.nombre}}</option>
+          </select>
+       </div>
+  
+       <div class="col-4">
+        <label for="descripcion" class="form-label">Descripcion: </label>
+        <input id="deescripcion" name="descripcion" class="form-control" style="border-radius: 16px" type="text" [(ngModel)]="descripcion">
+      </div>
+        <div class="col-4">
+          <label for="cantidad" class="form-label">Cantidad a mermas: </label>
+          <input id="cantidad" name="nombre" class="form-control" style="border-radius: 16px" type="number" [(ngModel)]="cantidadMerma">
+        </div>
+        <div class="col-12">
+          <button class="btn btn-success" type="submit" id="botonGuardar"><i class="fa-solid fa-floppy-disk" ></i> Mermar</button>
+        </div>
+  
+  
+      </form>
+  
+    </div>
+  
+  
+  
+  
+  </div>
+  
+  
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../login" class="btn btn-primary">vamos</button>
+</div>

@@ -1,0 +1,174 @@
+
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+  <a class="btn btn-secondary" routerLink="../" style="border-radius: 16px"
+    ><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a
+  >
+
+  <br />
+  <br />
+
+  <div class="card">
+    <h2
+      class="card-header"
+      style="
+        font-weight: bold;
+        font-size: 25px;
+        color: white;
+        background-color: #6ea1ca;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      Comprar materia prima
+    </h2>
+
+    <div class="card-body">
+      <form action="" class="row g-3" (ngSubmit)="agregarCompra()">
+        <div>
+          <label for="userEmp" class="form-label" hidden>Usuario: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="userEmp"
+            name="userEmp"
+            disabled
+            hidden
+          />
+          <h1>Selecciona la materia prima y cantidad a comprar:</h1>
+        </div>
+
+        <br />
+
+        <div class="col">
+          <label for="MateriaId" class="form-label">Materia: </label>
+
+          <select
+            [(ngModel)]="opcionSeleccionada"
+            (ngModelChange)="cargarDatos($event)"
+            name="MateriaId"
+            id="MateriaId"
+            class="form-select"
+            style="border-radius: 16px"
+            placeholder="Selecciona la materia prima"
+            required
+          >
+            <option>-------Selecciona una materia prima-----</option>
+            <option
+              *ngFor="let materias of listaNombreIdMateriaPrima"
+              [value]="materias.id_materia_prima"
+            >
+              <div>
+                {{ materias.nombre }}
+              </div>
+            </option>
+          </select>
+        </div>
+
+        <br />
+        <div class="col-4">
+          <label for="precioM" class="form-label">Precio: </label>
+          <input
+            type="number"
+            class="form-control"
+            id="precioM"
+            name="precioM"
+            placeholder="$XX"
+            disabled
+            [value]="precio_compra"
+          />
+        </div>
+
+        <div class="col-4">
+          <label for="cantidadMin" class="form-label">Cantidad min: </label>
+          <input
+            type="number"
+            class="form-control"
+            id="cantidaMin"
+            name="cantidadMin"
+            placeholder="X pz"
+            disabled
+            [value]="cantidad_minima_requerida"
+          />
+        </div>
+        
+
+        <div class="col-4">
+          <label for="cantidad" class="form-label">Cantidad: </label>
+          <input
+            type="number"
+            class="form-control"
+            id="cantidad"
+            name="cantidad"
+            placeholder="Ponga una Cantidad"
+            [(ngModel)]="cantidad_comprada"
+          />
+        </div>
+
+        <br />
+        <hr />
+        <div
+          class="col-12"
+          style="
+            border-color: rgb(192, 192, 192);
+            border-radius: 10px;
+            background-color: rgb(236, 236, 236);
+          "
+        >
+          <div
+            class="col-12"
+            style="
+              border-color: rgb(192, 192, 192);
+              border-radius: 10px;
+              background-color: rgb(236, 236, 236);
+            "
+          >
+            <h2 style="margin-top: 5px; margin-left: 10px">
+              <ng-container
+                *ngIf="
+                  opcionSeleccionada !== 0 && cantidad_comprada !== 0;
+                  else noSeleccionado
+                "
+              >
+                Total a pagar: ${{ calcularTotal() }}
+              </ng-container>
+
+              <ng-template #noSeleccionado>
+                Por favor, ingrese la cantidad y seleccione una materia prima.
+              </ng-template>
+            </h2>
+          </div>
+        </div>
+
+        <div
+          class="col-12"
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <button type="submit" class="btn btn-success">Comprar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../login" class="btn btn-primary">vamos</button>
+</div>

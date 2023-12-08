@@ -1,0 +1,38 @@
+.contenedorPrincipal {
+  margin: 10px;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 4em;
+}
+
+.btnComprar{
+  background-color: #6ea1ca;
+  color: #fff;
+  border-radius: 16px;
+  border: 1px solid #6ea1ca;
+}
+
+.btnComprar:hover{
+  background-color: #fff;
+  color: #6ea1ca;
+  border-radius: 16px;
+  border: 1px solid #6ea1ca;
+}
+
+.card{
+  padding: 10px;
+  border: .1px solid #d9d9d9;
+  border-radius: 16px;
+}
+
+input{
+  border-radius: 16px;
+  border: 1px solid #6ea1ca;
+}
+
+select{
+  border-radius: 16px;
+  border: 1px solid #6ea1ca;
+}

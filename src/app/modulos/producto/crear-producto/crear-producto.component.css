@@ -1,0 +1,27 @@
+.contenedorPrincipal{
+  margin: 0.5rem;
+}
+
+.titulo{
+  font-size: 4em;
+  text-align: center;
+}
+
+.formularioProducto{
+  border: 2px solid #6ea1ca;
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+}
+
+#btnCrear{
+  border-radius: 16px;
+}
+
+#btnCrear:hover{
+  color: green;
+  background-color: white;
+  border: 1px solid green;
+  transition: all 0.60;
+}

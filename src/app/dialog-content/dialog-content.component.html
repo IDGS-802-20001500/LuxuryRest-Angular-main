@@ -1,0 +1,63 @@
+<!-- dialog-content.component.html -->
+<div class="mat-dialog-lg" style="padding: 30px">
+  <h2 mat-dialog-title style="font-size: xx-large">Detalle de Producto</h2>
+  <hr />
+  <br />
+
+  <img
+    alt="producto"
+    title="producto"
+    [src]="imagen"
+    style="height: 65px; width: 65"
+  />
+  <br />
+  <p>Nombre: {{ nombre }}</p>
+  <br />
+  <p>Precio: ${{ precio_venta }}</p>
+  <br />
+  <p>Cantidad disponible: {{ cantidad_disponible }} unidades.</p>
+  <br />
+  <p style="font-size: large; font-weight: bold; font-style: italic">
+    Selecciona la cantidad de elementos de este producto que desees comprar:
+  </p>
+  <br />
+  <div class="row cantidadPr">
+    <div class="col">Cantidad:</div>
+    <div class="col">
+      <input
+        type="number"
+        min="1"
+        max="{{ cantidad_disponible }}"
+        class="form-control"
+        style="border-radius: 16px"
+        [(ngModel)]="cantidad_comprar"
+      />
+    </div>
+  </div>
+  <br />
+  <button
+    (click)="agregarAlCarritoMasProducto()"
+    mat-button
+    mat-dialog-close
+    style="background-color: green; color: white"
+  >
+    <i class="fa-solid fa-cart-plus"></i>Agregar a carrito
+  </button>
+  <br />
+  <mat-dialog-actions
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    "
+  >
+    <button
+      mat-button
+      (click)="closeDialog()"
+      style="background-color: red; color: white"
+    >
+      Cerrar
+    </button>
+  </mat-dialog-actions>
+</div>

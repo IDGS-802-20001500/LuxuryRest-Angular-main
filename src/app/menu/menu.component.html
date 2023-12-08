@@ -1,0 +1,202 @@
+<div class="contenedor-padre">
+  <mat-toolbar class="barra" style="background-color: #6ea1ca">
+    <mat-toolbar-row style="margin-top: 20px; margin-bottom: 10px">
+      <button style="color: white" (click)="cajon.toggle()" mat-icon-button>
+        <mat-icon style="font-size: 32px">menu</mat-icon>
+      </button>
+      <img
+        src="assets/logo-inverso.png"
+        style="width: 90px; height: 90px"
+        title="Luxury Rest"
+      />
+      <span style="color: white; font-size: 55px; font-family: Westwood-Studio">
+        Luxury Rest
+      </span>
+      <!-- &nbsp; -->
+      <h4
+        *ngIf="usuario"
+        style="color: white; font-weight: bold; margin-left: 500px"
+      >
+        <i class="fa-solid fa-user"></i>
+        {{ usuario }}
+      </h4>
+      <button
+        *ngIf="usuario"
+        mat-raised-button
+        style="margin-left: 40px"
+        (click)="cerrarSesion()"
+      >
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Cerrar Sesión
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="contenido">
+    <mat-sidenav style="min-width: 250px" #cajon mode="side" opened>
+      <mat-nav-list style="background-color: #f9f7f3">
+        <div class="img">
+          <img
+            src="assets/Logo2.png"
+            style="width: 140px; height: 140px; margin: 10px"
+            title="Luxury Rest"
+          />
+          <br />
+        </div>
+
+        <div class="img">
+          <span
+            style="
+              color: #6ea1ca;
+              font-size: 20px;
+              margin-bottom: 10px;
+              font-family: LuxuriousScript-Regular;
+              font-style: italic;
+            "
+          >
+            Luxury Rest
+          </span>
+          <hr />
+          <br />
+        </div>
+
+        <a mat-list-item routerLinkActive="active" routerLink="home">
+          <i class="fa-solid fa-house" style="margin-right: 10px"></i>
+          Inicio
+        </a>
+        <a mat-list-item routerLinkActive="active" routerLink="login">
+          <i
+            class="fa-solid fa-arrow-right-to-bracket"
+            style="margin-right: 10px"
+          ></i>
+          Iniciar sesión
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="producto"
+        >
+          <i class="fa-solid fa-shop" style="margin-right: 10px"></i>
+          Productos
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/inventario"
+        >
+          <i class="fa-solid fa-boxes-stacked" style="margin-right: 10px"></i>
+          Inventario
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/materiaPrima"
+        >
+          <i class="fa-solid fa-industry" style="margin-right: 10px"></i>
+          Materia prima
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/receta"
+        >
+          <i class="fa-solid fa-book" style="margin-right: 10px"></i>| Recetas
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/compras"
+        >
+          <i class="fa-solid fa-cart-shopping" style="margin-right: 10px"></i>
+          Compras
+        </a>
+        
+        <a
+          *ngIf="rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/historialVentas"
+        >
+          <i
+            class="fa-solid fa-file-invoice-dollar"
+            style="margin-right: 10px"
+          ></i>
+          Historial Ventas
+        </a>
+
+        <a
+          *ngIf="rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/finanzas"
+        >
+          <i class="fa-solid fa-chart-simple" style="margin-right: 10px"></i>
+          Finanzas
+        </a>
+        <a
+          *ngIf="
+            rol == 'Empleado' || rol == 'Administrador' || rol == 'Usuario'
+          "
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/pedidos"
+        >
+          <i class="fa-solid fa-truck" style="margin-right: 10px"></i>
+          Pedidos
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/proveedores"
+        >
+          <i class="fa-solid fa-truck-ramp-box" style="margin-right: 10px"></i>
+          Proveedores
+        </a>
+        <a
+          *ngIf="rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/usuarios"
+        >
+          <i class="fa-solid fa-users" style="margin-right: 10px"></i>
+          Usuarios
+        </a>
+        <a mat-list-item routerLinkActive="active" routerLink="/ventas">
+          <i class="fa-solid fa-cash-register" style="margin-right: 10px"></i>
+          Ventas
+        </a>
+        <a
+          *ngIf="rol == 'Empleado' || rol == 'Administrador'"
+          mat-list-item
+          routerLinkActive="active"
+          routerLink="/mermas"
+        >
+          <i class="fa-solid fa-trash" style="margin-right: 10px"></i>
+          Mermas
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="contendorMain">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<div>
+  <footer class="mi-footer" style="background-color: #6ea1ca;">
+    <hr style="color: white" />
+    <div class="imagen">
+      <img
+        src="assets/logo-inverso.png"
+        style="width: 90px; height: 90px"
+        title="Luxury Rest"
+      />
+      <p class="derechos">&copy; 2023 LuxuryRest.</p>
+    </div>
+  </footer>
+</div>

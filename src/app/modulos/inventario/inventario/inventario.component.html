@@ -1,0 +1,112 @@
+<div *ngIf="usuario.length > 0">
+  <div class="contenedorPrincipal">
+    <br />
+    <div class="img">
+      <div
+        class="icon-container"
+        style="background-color: #6ea1ca; border-radius: 50%"
+      >
+        <i
+          class="fa-solid fa-boxes-stacked"
+          style="font-size: 30px; color: #fff"
+        ></i>
+      </div>
+      <h1
+        class="titulo"
+        style="
+          text-align: center;
+          font-size: 48px;
+          font-weight: bold;
+          font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+          margin-left: 10px;
+        "
+      >
+        Inventario
+      </h1>
+    </div>
+
+    <hr />
+    <br />
+    <div class="card">
+      <h1
+        class="card-header"
+        style="
+          font-weight: bold;
+          font-size: 18px;
+          color: white;
+          background-color: #6ea1ca;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        Inventario de Materia
+      </h1>
+      <br />
+      <div class="card-body">
+        <div class="outer-container"></div>
+        <br />
+        <div style="overflow-x: auto; overflow-y: auto; max-height: 400px">
+          <table class="table table-striped table-hover">
+            <thead class="text-center">
+              <tr>
+                <th>Materia prima</th>
+                <th>Cantidad almacenada</th>
+                <th colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr *ngFor="let inventario of listaInventario">
+                <td>
+                  <ng-container *ngFor="let materia of listaMateriaPrima">
+                    <ng-container
+                      *ngIf="
+                        materia.id_materia_prima == inventario.id_materia_prima
+                      "
+                    >
+                      {{ materia.nombre }}
+                    </ng-container>
+                  </ng-container>
+                </td>
+                <td>
+                  <ng-container *ngFor="let materia of listaMateriaPrima">
+                    <ng-container
+                      *ngIf="
+                        materia.id_materia_prima == inventario.id_materia_prima
+                      "
+                    >
+                      {{
+                        inventario.cantidad_almacenada +
+                          " " +
+                          materia.unidad_medida
+                      }}
+                    </ng-container>
+                  </ng-container>
+                </td>
+                <td>
+                  <button
+                    class="btn btn-warning"
+                    routerLink="editarInventario"
+                    (click)="editarInventario(inventario.id_inventario)"
+                  >
+                    <i class="fa-solid fa-pencil"></i>
+                    Editar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br />
+  <label for="">Inicia sesion</label>
+  <br />
+  <br />
+
+  <button routerLink="../login" class="btn btn-primary">vamos</button>
+</div>

@@ -1,0 +1,73 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+
+
+
+
+
+<div class="contenedorPrincipal">
+
+  <h1 class="titulo">Crear producto</h1>
+  <br>
+  <a class="btn btn-danger" routerLink="../" style="border-radius: 16px;"><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a>
+  <br>
+  <br>
+
+  <div class="formularioProducto">
+
+
+    <form action="" class="row g-3" (ngSubmit)="crearProd()">
+
+     <div class="col">
+
+        <label for="productoId" class="form-label">Producto: </label>
+
+        <select   [(ngModel)]="opcionSeleccionada" (ngModelChange)="cargarDatos($event)" name="productoId" id="productoId" class="form-select" style="border-radius: 16px;" placeholder="Selecciona el producto" required>
+          
+          <option>-------Selecciona un producto-----</option>
+          <option  *ngFor="let productos of productosConEstatus1" [value]="productos.id_producto">
+
+            <div>
+              {{productos.nombre}}
+            </div>
+
+          </option> 
+
+        </select>
+
+     </div>
+
+      <div class="col">
+        <label for="cant" class="form-label">Cantidad a fabricar: </label>
+        <input type="number" id="cant" name="cant" class="form-control" style="border-radius: 16px;" min="1" placeholder="Pz" [(ngModel)]="cantidad_Fabricar" required>
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-success" type="submit" id="btnCrear"><i class="fa-solid fa-gears"></i> Crear</button>
+      </div>
+
+
+    </form>
+
+  </div>
+
+
+
+
+</div>
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../login" class="btn btn-primary">vamos</button>
+</div>

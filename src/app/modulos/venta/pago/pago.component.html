@@ -1,0 +1,86 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+  <div class="contenedorPrincipal">
+    <div>
+      <h1 class="titulo">Pago</h1>
+    </div>
+    <br>
+    <div class="card pasarela">
+      <img src="assets/logo_luxuryRest.jpg" class="logo">
+      <div class="card-body">
+        <form action="" class="row g-3">
+          <div class="col-12">
+            <label for="nombreCard" class="form-label">Nombre: </label>
+            <input type="text" class="form-control" id="nombreCard" name="nombreCard" [value]="nombre">
+          </div>
+          <div class="col-12">
+            <label for="numCard" class="form-label">Tarjeta: </label>
+            <input type="text" class="form-control" id="numCard" name="numCard" placeholder="0000-0000-0000-0000">
+          </div>
+          <div class="col-5">
+            <label for="dateCard" class="form-label">Fecha: </label>
+            <input type="text" class="form-control" id="dateCard" name="dateCard" placeholder="01/28" [value]="fecha">
+          </div>
+          <div class="col-5">
+            <label for="cvvCard" class="form-label">CVV: </label>
+            <input type="text" class="form-control" id="cvvCard" name="cvvCard" placeholder="000">
+          </div>
+          <hr>
+          <div class="col-12">
+            <div id="tablaPago">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Productos a pagar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let producto of listaCarrito">
+                    <td>{{producto.nombre}}</td>
+                    <td class="text-end">${{producto.precio_venta}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <div class="row justify-content-center align-items-center" style="border: 1px solid gainsboro; border-radius: 8px;">
+              <div class="col-md">
+                <h1>Total: </h1>
+              </div>
+              <div class="col-md">
+                <h1 class="text-end">${{total  | number:'1.2-2' }}</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <button class="btn btn-success" (click)="pagar()">Pagar</button>
+          </div>
+          <div class="col">
+            <button class="btn btn-danger" routerLink="../">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../../login" class="btn btn-primary">vamos</button>
+</div>
+
+

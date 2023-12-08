@@ -1,0 +1,111 @@
+<div *ngIf="usuario.length > 0">
+
+
+
+
+
+  <div class="contenedorPrincipal">
+    <a class="btn btn-danger" routerLink="../" style="border-radius: 16px"
+      ><i class="fa-solid fa-arrow-right fa-rotate-180"></i> Regresar</a
+    >
+    <h1 class="titulo">Nueva receta</h1>
+  
+    <br />
+    <br />
+  
+    <div class="formularioReceta">
+      <form action="" class="row g-3" (ngSubmit)="agregarReceta()">
+        <div class="col">
+          <label for="ProductoId" class="form-label">Producto: </label>
+  
+          <select
+            [(ngModel)]="opcionSeleccionada1"
+            (ngModelChange)="cargarDatos1($event)"
+            name="ProductoId"
+            id="ProductoId"
+            class="form-select"
+            style="border-radius: 16px"
+            placeholder="Selecciona el producto"
+            required
+          >
+            <option>-------Selecciona un producto-----</option>
+            <option
+              *ngFor="let productos of listaIdNombreproductos"
+              [value]="productos.id_producto"
+            >
+              <div>
+                {{ productos.nombre }}
+              </div>
+            </option>
+          </select>
+        </div>
+  
+        <br />
+  
+        <div class="col">
+          <label for="MateriaId" class="form-label">Materias: </label>
+  
+          <select
+            [(ngModel)]="opcionSeleccionada"
+            (ngModelChange)="cargarDatos($event)"
+            name="MateriaId"
+            id="MateriaId"
+            class="form-select"
+            style="border-radius: 16px"
+            placeholder="Selecciona la materia"
+            required
+          >
+            <option>-----Selecciona un materia prima-----</option>
+            <option
+              *ngFor="let materias of listaIdNombreMaterias"
+              [value]="materias.id_materia_prima"
+            >
+              <div>
+                {{ materias.nombre }}
+              </div>
+            </option>
+          </select>
+        </div>
+  
+        <br />
+  
+        <div class="col-4">
+          <label for="cantReq" class="form-label">Cantidad requerida: </label>
+          <input
+            type="number"
+            id="cantReq"
+            name="cantReq"
+            class="form-control"
+            style="border-radius: 16px"
+            min="1"
+            placeholder="pz"
+            [(ngModel)]="cantidad_requerida"
+          />
+        </div>
+  
+        <div class="col-12">
+          <button class="btn btn-success" type="submit" id="botonGuardar">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+
+
+
+
+</div>
+<div *ngIf="usuario == ''">
+  <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
+  <br>
+  <label for="">Inicia sesion</label>
+  <br>
+  <br>
+
+  <button routerLink="../../login" class="btn btn-primary">vamos</button>
+</div>
+
+
+
