@@ -130,9 +130,9 @@ export class PedidoComponent {
     );
 
     this.id_pedido = productoEncontrado.id_pedido;
-    this.estado_pedido = 1;
+    this.estado_pedido = 3;
+    this.id_usuario = productoEncontrado.id_usuario;
     this.fecha_hora_pedido = productoEncontrado.fecha_hora_pedido;
-    this.domicilio = '';
     this.empleado = 1;
 
     this.agregarPedido();
@@ -144,7 +144,7 @@ export class PedidoComponent {
     );
 
     this.id_pedido = productoEncontrado.id_pedido;
-    this.estado_pedido = 0;
+    this.estado_pedido = 4;
     this.fecha_hora_pedido = productoEncontrado.fecha_hora_pedido;
     this.domicilio = '';
     this.empleado = 1;

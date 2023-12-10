@@ -1,415 +1,409 @@
 <div *ngIf="usuario.length > 0">
+  <div class="contenedor" style="margin: 0.5rem">
+    <div class="contenedorPrincipal" *ngIf="rol == 'Usuario'">
+      <h1 class="titulo">Gestión de pedidos</h1>
+      <br />
+      <mat-tab-group>
+        <mat-tab label="Pendiente" class="tabP">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>N° venta</th>
+                <th>Producto(s)</th>
+                <th>Fecha</th>
+                <th colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 2
+                  "
+                >
+                  {{ pedido.id_pedido }}
+                </td>
 
-
-
-
-
-
-
-
-
-<div class="contenedor" style=" margin: 0.5rem;
-">
-  <div class="contenedorPrincipal"  *ngIf="rol == 'Usuario'">
-
-
-  <h1 class="titulo">Gestión de pedidos</h1>
-  <br>
-  <mat-tab-group>
-    <mat-tab label="Pendiente" class="tabP">
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>N° venta</th>
-            <th>Producto(s)</th>
-            <th>Fecha</th>
-            <th colspan="2">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 2
+                  "
+                >
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2">{{pedido.fecha_hora_pedido}}</td>
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2"><button mat-raised-button color="warn" (click)="eliminar(pedido.id_pedido)">Cancelar</button></td>
-          </tr>
-        </tbody>
+                </td>
 
-      </table>
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 2
+                  "
+                >
+                  {{ pedido.fecha_hora_pedido }}
+                </td>
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 2
+                  "
+                >
+                  <button
+                    mat-raised-button
+                    color="warn"
+                    (click)="eliminar(pedido.id_pedido)"
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Enviado" class="tabE">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>N° venta</th>
+                <th>Producto(s)</th>
+                <th>Entrega</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  {{ pedido.id_pedido }}
+                </td>
 
-    </mat-tab>
-    <mat-tab label="Enviado" class="tabE">
-
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>N° venta</th>
-            <th>Producto(s)</th>
-            <th>Entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 1">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 1">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 1">{{pedido.fecha_hora_entrega}}</td>
-          </tr>
-        </tbody>
+                </td>
 
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  {{ pedido.fecha_hora_entrega }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Cancelado" class="tabC">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>N° venta</th>
+                <th>Producto(s)</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 0
+                  "
+                >
+                  {{ pedido.id_pedido }}
+                </td>
 
-      </table>
-
-    </mat-tab>
-    <mat-tab label="Cancelado" class="tabC">
-
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>N° venta</th>
-            <th>Producto(s)</th>
-            <th>Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 0">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 0">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 0
+                  "
+                >
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 0">{{pedido.fecha_hora_pedido}}</td>
-          </tr>
-        </tbody>
+                </td>
 
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 0
+                  "
+                >
+                  {{ pedido.fecha_hora_pedido }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
 
-      </table>
+    <div class="contenedorPrincipal" *ngIf="rol == 'Empleado'">
+      <h1 class="titulo">Gestión de pedidos</h1>
+      <br />
+      <br />
+      <mat-tab-group>
+        <mat-tab label="Pendiente" class="tabP">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID venta</th>
+                <th>Producto(s)</th>
+                <th>Fecha</th>
+                <th colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  {{ pedido.id_pedido }}
+                </td>
 
-    </mat-tab>
-  </mat-tab-group>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="contenedorPrincipal" *ngIf="rol == 'Empleado'">
-
-
-  <h1 class="titulo">Gestión de pedidos</h1>
-  <br>
-  <br>
-  <mat-tab-group>
-    <mat-tab label="Pendiente" class="tabP">
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>ID venta</th>
-            <th>Producto(s)</th>
-            <th>Fecha</th>
-            <th colspan="2">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2">{{pedido.fecha_hora_pedido}}</td>
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2"><button mat-raised-button color="primary"  (click)="enviar(pedido.id_pedido)">Enviar</button></td>
-            <td *ngIf="id_usuario == pedido.id_usuario && pedido.estado_pedido == 2"><button mat-raised-button color="warn" (click)="eliminar(pedido.id_pedido)">Cancelar</button></td>
-          </tr>
-        </tbody>
+                </td>
 
-      </table>
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  {{ pedido.fecha_hora_pedido }}
+                </td>
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="enviar(pedido.id_pedido)"
+                  >
+                    Enviar
+                  </button>
+                </td>
+                <td
+                  *ngIf="
+                    id_usuario == pedido.id_usuario && pedido.estado_pedido == 1
+                  "
+                >
+                  <button
+                    mat-raised-button
+                    color="warn"
+                    (click)="eliminar(pedido.id_pedido)"
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
 
-    </mat-tab>
-    
-  </mat-tab-group>
+    <div class="contenedorPrincipal" *ngIf="rol == 'Administrador'">
+      <h1 class="titulo">Gestión de pedidos</h1>
+      <br />
+      <br />
+      <mat-tab-group>
+        <mat-tab label="Pendiente" class="tabP">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID venta</th>
+                <th>Producto(s)</th>
+                <th>Fecha</th>
+                <th colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td *ngIf="pedido.estado_pedido == 1">
+                  {{ pedido.id_pedido }}
+                </td>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="contenedorPrincipal"  *ngIf="rol == 'Administrador'">
-
-
-  <h1 class="titulo">Gestión de pedidos</h1>
-  <br>
-  <br>
-  <mat-tab-group>
-    <mat-tab label="Pendiente" class="tabP">
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>ID venta</th>
-            <th>Producto(s)</th>
-            <th>Fecha</th>
-            <th colspan="2">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf=" pedido.estado_pedido == 2">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf=" pedido.estado_pedido == 2">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td *ngIf="pedido.estado_pedido == 1">
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="pedido.estado_pedido == 2">{{pedido.fecha_hora_pedido}}</td>
-            <td *ngIf=" pedido.estado_pedido == 2"><button mat-raised-button color="primary"  (click)="enviar(pedido.id_pedido)">Enviar</button></td>
-            <td *ngIf="pedido.estado_pedido == 2"><button mat-raised-button color="warn" (click)="eliminar(pedido.id_pedido)">Cancelar</button></td>
-          </tr>
-        </tbody>
+                </td>
 
-      </table>
+                <td *ngIf="pedido.estado_pedido == 1">
+                  {{ pedido.fecha_hora_pedido }}
+                </td>
+                <td *ngIf="pedido.estado_pedido == 1">
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="enviar(pedido.id_pedido)"
+                  >
+                    Enviar
+                  </button>
+                </td>
+                <td *ngIf="pedido.estado_pedido == 1">
+                  <button
+                    mat-raised-button
+                    color="warn"
+                    (click)="eliminar(pedido.id_pedido)"
+                  >
+                    Cancelar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Enviado" class="tabE">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID venta</th>
+                <th>Producto(s)</th>
+                <th>Entrega</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td *ngIf="pedido.estado_pedido == 3">
+                  {{ pedido.id_pedido }}
+                </td>
 
-    </mat-tab>
-    <mat-tab label="Enviado" class="tabE">
-
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>ID venta</th>
-            <th>Producto(s)</th>
-            <th>Entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf="pedido.estado_pedido == 1">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf="pedido.estado_pedido == 1">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td *ngIf="pedido.estado_pedido == 3">
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="pedido.estado_pedido == 1">{{pedido.fecha_hora_entrega}}</td>
-          </tr>
-        </tbody>
+                </td>
 
+                <td *ngIf="pedido.estado_pedido == 3">
+                  {{ pedido.fecha_hora_entrega }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Cancelado" class="tabC">
+          <br />
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID venta</th>
+                <th>Producto(s)</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of listaPedidos">
+                <td *ngIf="pedido.estado_pedido == 4">
+                  {{ pedido.id_pedido }}
+                </td>
 
-      </table>
-
-    </mat-tab>
-    <mat-tab label="Cancelado" class="tabC">
-
-      <br>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>ID venta</th>
-            <th>Producto(s)</th>
-            <th>Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pedido of listaPedidos">
-            <td *ngIf="pedido.estado_pedido == 0">
-              {{pedido.id_pedido}}
-            </td>
-            
-            <td *ngIf="pedido.estado_pedido == 0">
-
-
-              <div *ngFor="let pedidosproducto of listaPedidosProducto">
-
-
-
-                <div *ngFor="let producto of listaProductos">
-
-
-                  <div *ngIf="(producto.id_producto == pedidosproducto.id_producto)  && (pedidosproducto.id_pedido == pedido.id_pedido)">
-
-                    
-                    {{producto.nombre}}({{pedidosproducto.cantidad}})
+                <td *ngIf="pedido.estado_pedido == 4">
+                  <div *ngFor="let pedidosproducto of listaPedidosProducto">
+                    <div *ngFor="let producto of listaProductos">
+                      <div
+                        *ngIf="
+                          producto.id_producto == pedidosproducto.id_producto &&
+                          pedidosproducto.id_pedido == pedido.id_pedido
+                        "
+                      >
+                        {{ producto.nombre }}({{ pedidosproducto.cantidad }})
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </td>
-            
-            <td *ngIf="pedido.estado_pedido == 0">{{pedido.fecha_hora_pedido}}</td>
-          </tr>
-        </tbody>
+                </td>
 
-
-      </table>
-
-    </mat-tab>
-  </mat-tab-group>
-
-</div>
-
-</div>
-
-
-
-
+                <td *ngIf="pedido.estado_pedido == 4">
+                  {{ pedido.fecha_hora_pedido }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
 </div>
 <div *ngIf="usuario == ''">
   <h1>Al parecer no tienes acceso a esta página, regresemos.</h1>
-  <br>
+  <br />
   <label for="">Inicia sesion</label>
-  <br>
-  <br>
+  <br />
+  <br />
 
   <button routerLink="../login" class="btn btn-primary">vamos</button>
 </div>
